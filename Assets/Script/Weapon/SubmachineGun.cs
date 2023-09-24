@@ -9,8 +9,7 @@ public class SubmachineGun : Weapon
     {
         if(countTime == 0)
         {
-            GameObject bulletObj = Instantiate(weaponData.Projectile); // thay đoạn này bằng pooling
-            bulletObj.transform.position = SpawnPoint.position;
+            GameObject bulletObj = ObjectPooler.Instance.GetGameObjectFormPool("Bullet",SpawnPoint.position,Quaternion.identity);
             Bullet bullet = bulletObj.GetComponent<Bullet>();
             bullet.MoveToTarget(target.position);
         }

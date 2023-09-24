@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 30
   TimeExistence: 2
-  ProjectileFX: {fileID: 0}
-  HitFX: {fileID: 0}
-  flashFX: {fileID: 0}
+  Damage: 10
+  ProjectileFX: {fileID: 198594740086084638, guid: 804ae8f9f84a897418a43058844761ab, type: 3}
+  HitFX: {fileID: 198034330539653080, guid: c2b56ab585925cb4caf968d84119f31a, type: 3}
+  flashFX: {fileID: 198858048593842604, guid: 46b312e00ed9c1f459ea9f0e55bfac77, type: 3}

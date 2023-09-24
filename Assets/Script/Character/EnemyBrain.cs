@@ -7,8 +7,6 @@ public class EnemyBrain : CharacterBrain
 {
     [SerializeField] float followRage;
 
-    public Transform Point;
-
     protected List<Vector3> wayPoint;
     protected int currentPointIndex;
 
@@ -46,13 +44,13 @@ public class EnemyBrain : CharacterBrain
         {
             animator.SetMovement(AnimatorCharacterController.MovementType.Run);
             agent.SetSpeed(1);
-            agent.MoveToDestination(target.transform.position);
+            agent.SetDestination(target.transform.position);
         }
         if (!arrived && !following && !attacking)
         {
             animator.SetMovement(AnimatorCharacterController.MovementType.Run);
             agent.SetSpeed(0);
-            agent.MoveToDestination(wayPoint[currentPointIndex]);
+            agent.SetDestination(wayPoint[currentPointIndex]);  
         }
 
     }
@@ -76,5 +74,10 @@ public class EnemyBrain : CharacterBrain
         toTarget = new Vector3(toTarget.x, 0, toTarget.z);
         float angle = Vector3.Angle(transform.forward, toTarget);
         return angle <= 45f;
+    }
+
+    protected override void HandlerDie()
+    {
+        Debug.Log("enemy die");
     }
 }

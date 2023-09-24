@@ -10,12 +10,12 @@ public abstract class Projectile : MonoBehaviour
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        this.DelayLamda(() =>
-        {
-            // viết logic trả lại viên đạn vào pool ở đây
-            Destroy(gameObject);
-        }, projectileData.TimeExistence);
     }
+    protected virtual void OnEnable()
+    {
+        Invoke("ReturnPool", projectileData.TimeExistence);
+    }
+    protected abstract void ReturnPool();
 
     public abstract void MoveToTarget(Vector3 target);
 }

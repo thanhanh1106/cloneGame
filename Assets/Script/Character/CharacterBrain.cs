@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class CharacterBrain : MonoBehaviour
+public abstract class CharacterBrain : MonoBehaviour,IDamageable
 {
     [Header("Config")]
     [SerializeField] protected string characterId;
@@ -11,6 +11,7 @@ public abstract class CharacterBrain : MonoBehaviour
     [SerializeField] protected Agent agent;
     [SerializeField] protected AnimatorCharacterController animator;
     [SerializeField] protected CharacterAttack characterAttack;
+    [SerializeField] protected StatsManager statsManager;
     
     public string Id => characterId;
     protected abstract CharacterBrain target { get; }
@@ -25,6 +26,7 @@ public abstract class CharacterBrain : MonoBehaviour
         agent = GetComponent<Agent>();
         animator = GetComponent<AnimatorCharacterController>();
         characterAttack = GetComponent<CharacterAttack>();
+        statsManager.OnDie += HandlerDie;
     }
 
     protected virtual void Attack()
@@ -35,4 +37,9 @@ public abstract class CharacterBrain : MonoBehaviour
         characterAttack.Attack(target.transform);
     }
 
+    public virtual void TakeDamage(float damage)
+    {
+        statsManager.TakeDamage(damage);
+    }
+    protected abstract void HandlerDie();
 }

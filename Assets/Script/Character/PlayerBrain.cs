@@ -12,6 +12,11 @@ public class PlayerBrain : CharacterBrain
         .Where(enemy => Vector3.Distance(transform.position,enemy.transform.position) <= characterAttack.AttackRange)
         .OrderBy(enemy => Vector3.Distance(transform.position, enemy.transform.position)).FirstOrDefault();
 
+    protected override void HandlerDie()
+    {
+        Debug.Log("Player die");
+    }
+
     protected void Update()
     {
         if(joystick.Direction == Vector2.zero)
