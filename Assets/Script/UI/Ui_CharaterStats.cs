@@ -17,7 +17,6 @@ public class Ui_CharaterStats : MonoBehaviour
 
     private void LateUpdate()
     {
-        Vector3 posCam = cameraMain.transform.position;
-        transform.LookAt(new Vector3(posCam.x,transform.rotation.y,posCam.z));
+        transform.forward = cameraMain.transform.forward;
     }
 }

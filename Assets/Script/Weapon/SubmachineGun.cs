@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine.Events;
 
 public class SubmachineGun : Weapon
 {
+
+
 
     float countTime = 0;
 
@@ -21,6 +24,7 @@ public class SubmachineGun : Weapon
             }, weaponData.ReloadTime);
         }
 
+        OnAttack?.Invoke(!isOnReloading);
         if (isOnReloading) return;
             
         if(countTime == 0)

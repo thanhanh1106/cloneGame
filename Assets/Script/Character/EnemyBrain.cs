@@ -15,6 +15,9 @@ public class EnemyBrain : CharacterBrain
     protected bool arrived = false;
     protected bool following = false;
     protected bool attacking = false;
+    protected bool die = false;
+
+    protected bool onWeaponAttacking;
 
     protected override void Awake()
     {
@@ -26,32 +29,49 @@ public class EnemyBrain : CharacterBrain
             .Select(point => point.position).ToList();
 
         agent.OnArived += HandlerArrived;
+        characterAttack.OnAttack = HandlerWeaponAttaking;
     }
+
+    
 
     protected virtual void Update()
     {
+        if (die)
+        {
+            animator.SetTrigger("Die");
+            return;
+        }
         attacking = Vector3.Distance(transform.position, target.transform.position) <= characterAttack.AttackRange;
         following = Vector3.Distance(transform.position,target.transform.position) <= followRage 
             && !attacking && HadSeenPlayer();
         
         if(attacking)
         {
-            agent.AgentBody.isStopped = true; // dừng lại không di chuyển nữa
+             
             Attack();
+            if (onWeaponAttacking)
+            {
+                agent.AgentBody.isStopped = true;
+                // dừng lại không di chuyển nữa
+            }
+            else Follow(0.5f);
         }
 
-        if (following)
-        {
-            animator.SetMovement(AnimatorCharacterController.MovementType.Run);
-            agent.SetSpeed(1);
-            agent.SetDestination(target.transform.position);
-        }
+        if (following) Follow(1);
         if (!arrived && !following && !attacking)
         {
             animator.SetMovement(AnimatorCharacterController.MovementType.Run);
             agent.SetSpeed(0);
             agent.SetDestination(wayPoint[currentPointIndex]);  
         }
+        
+    }
+
+    void Follow(float speedLerpValue)
+    {
+        animator.SetMovement(AnimatorCharacterController.MovementType.Run);
+        agent.SetSpeed(speedLerpValue);
+        agent.SetDestination(target.transform.position);
     }
 
     protected void HandlerArrived()
@@ -77,6 +97,11 @@ public class EnemyBrain : CharacterBrain
 
     protected override void HandlerDie()
     {
+        
         Debug.Log("enemy die");
+    }
+    private void HandlerWeaponAttaking(bool onAttacking)
+    {
+        onWeaponAttacking = onAttacking;
     }
 }

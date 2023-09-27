@@ -6484,7 +6484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sliderImage: {fileID: 1804685192}
-  stats: {fileID: 11400000, guid: d601ac9e4fe45c24b9f5a6b2470a98c3, type: 2}
+  stats: {fileID: 11400000, guid: 5d08358a210f3944dbc4d7d7d45de6a0, type: 2}
 --- !u!222 &335337592
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8193,7 +8193,7 @@ RectTransform:
   m_GameObject: {fileID: 439109644}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 212974450}
@@ -10233,7 +10233,7 @@ RectTransform:
   m_GameObject: {fileID: 541351062}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 908718093}
@@ -27083,7 +27083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sliderImage: {fileID: 325938976}
-  stats: {fileID: 11400000, guid: 312b534831812334492bb28be15ad1af, type: 2}
+  stats: {fileID: 11400000, guid: 33c2d730708fd8146a03557c6568841a, type: 2}
 --- !u!222 &1481171803
 CanvasRenderer:
   m_ObjectHideFlags: 0

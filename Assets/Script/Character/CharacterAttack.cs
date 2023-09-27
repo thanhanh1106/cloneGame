@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ public class CharacterAttack : MonoBehaviour
 {
     [SerializeField] float DefaultAttackRange = 5f;
     private Weapon weapon;
+
+    public Action<bool> OnAttack;
 
     private void OnEnable()
     {
@@ -29,11 +32,15 @@ public class CharacterAttack : MonoBehaviour
     private void Awake()
     {
         weapon = GetComponentInChildren<Weapon>();
+        weapon.OnAttack = HandlerOnAttackWeapon;
     }
+
+
 
     void HandleChangeWeapon()
     {
         weapon = GetComponentInChildren<Weapon>();
+        weapon.OnAttack = HandlerOnAttackWeapon;
     }
 
     public void Attack(Transform target)
@@ -45,5 +52,9 @@ public class CharacterAttack : MonoBehaviour
     public void HandlerChangedProjectile(int currentProjectile)
     {
         // viết logic để xử lý ui số lượng đạn có trong băng ở đây
+    }
+    protected void HandlerOnAttackWeapon(bool isAttacking)
+    {
+        OnAttack?.Invoke(isAttacking);
     }
 }

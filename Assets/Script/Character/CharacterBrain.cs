@@ -28,6 +28,10 @@ public abstract class CharacterBrain : MonoBehaviour,IDamageable
         characterAttack = GetComponent<CharacterAttack>();
         statsManager.OnDie += HandlerDie;
     }
+    //protected virtual void Update()
+    //{
+
+    //}
 
     protected virtual void Attack()
     {

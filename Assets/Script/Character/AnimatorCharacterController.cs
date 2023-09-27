@@ -28,6 +28,8 @@ public class AnimatorCharacterController : MonoBehaviour
 
     public Animator Animator => this.TryGetComponent(ref animator);
 
+    bool animationDieTriggered = false;
+
     public bool ApplyRootMotion 
     { 
         get => Animator.applyRootMotion;
@@ -36,6 +38,7 @@ public class AnimatorCharacterController : MonoBehaviour
 
     public void SetMovement(MovementType type)
     {
+        if (animationDieTriggered) return;
         // nếu đang trong trạng thái di chuyển và đúng kiểu di chuyển rồi thì thôi
         if (currentAnimationState == AnimationState.Movement && currentMovementType == type)
             return;
@@ -49,6 +52,7 @@ public class AnimatorCharacterController : MonoBehaviour
 
     public void SetAttack(AttackType type)
     {
+        if(animationDieTriggered) return;
         if(currentAnimationState == AnimationState.Attack && currentAttackType == type) return;
 
         SetFloat("AttackBlend", (float)type);
