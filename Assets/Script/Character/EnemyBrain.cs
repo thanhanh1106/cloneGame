@@ -52,7 +52,6 @@ public class EnemyBrain : CharacterBrain
             agent.SetSpeed(0);
             agent.SetDestination(wayPoint[currentPointIndex]);  
         }
-
     }
 
     protected void HandlerArrived()

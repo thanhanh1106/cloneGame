@@ -15,5 +15,5 @@ MonoBehaviour:
   Projectile: {fileID: 3619236790702965039, guid: 287407f5a28acae458b35cba3a6f5e85, type: 3}
   AttachRange: 10
   FireRate: 0.2
-  ReloadTime: 0.5
-  ProjectileSpeed: 20
+  ReloadTime: 1.5
+  NumOfProjectile: 10

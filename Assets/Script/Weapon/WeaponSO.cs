@@ -12,5 +12,7 @@ public class WeaponSO : ScriptableObject
     public float AttachRange;
     public float FireRate;
     public float ReloadTime;
-    public float ProjectileSpeed;
+    public int NumOfProjectile;
+
+
 }

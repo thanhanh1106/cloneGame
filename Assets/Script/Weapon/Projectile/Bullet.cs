@@ -6,7 +6,8 @@ public class Bullet : Projectile
 {
     public override void MoveToTarget(Vector3 target)
     {
-        transform.LookAt(target);
+        Vector3 targetNotY = new Vector3(target.x, transform.position.y, target.z);
+        transform.LookAt(targetNotY);
         rb.velocity = transform.forward * projectileData.MoveSpeed;
     }
     protected void OnTriggerEnter(Collider other)
