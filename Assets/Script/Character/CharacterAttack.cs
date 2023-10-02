@@ -12,13 +12,13 @@ public class CharacterAttack : MonoBehaviour
 
     private void OnEnable()
     {
-        if(weapon)
-            weapon.OnChangedProjectile += HandlerChangedProjectile;
+        if(weapon && weapon is Gun gun)
+            gun.OnChangedProjectile += HandlerChangedProjectile;
     }
     private void OnDisable()
     {
-        if(weapon)
-            weapon.OnChangedProjectile -= HandlerChangedProjectile;
+        if(weapon && weapon is Gun gun)
+            gun.OnChangedProjectile -= HandlerChangedProjectile;
     }
 
     public float AttackRange
@@ -40,6 +40,7 @@ public class CharacterAttack : MonoBehaviour
     void HandleChangeWeapon()
     {
         weapon = GetComponentInChildren<Weapon>();
+        weapon = weapon as SubmachineGun;
         weapon.OnAttack = HandlerOnAttackWeapon;
     }
 

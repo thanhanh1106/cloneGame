@@ -10,6 +10,8 @@ public class WeaponSO : ScriptableObject
 
     [Header("Config")]
     public float AttachRange;
+
+    [Header("Config Gun")]
     public float FireRate;
     public float ReloadTime;
     public int NumOfProjectile;

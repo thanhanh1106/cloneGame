@@ -4,11 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SubmachineGun : Weapon
+public class SubmachineGun : Gun
 {
-
-
-
     float countTime = 0;
 
     bool isOnReloading = false;
@@ -26,10 +23,10 @@ public class SubmachineGun : Weapon
 
         OnAttack?.Invoke(!isOnReloading);
         if (isOnReloading) return;
-            
-        if(countTime == 0)
+
+        if (countTime == 0)
         {
-            GameObject bulletObj = ObjectPooler.Instance.GetGameObjectFormPool("Bullet",SpawnPoint.position,Quaternion.identity);
+            GameObject bulletObj = ObjectPooler.Instance.GetGameObjectFormPool("Bullet", SpawnPoint.position, Quaternion.identity);
             Bullet bullet = bulletObj.GetComponent<Bullet>();
             bullet.MoveToTarget(target.position);
             currentProjectile--;
