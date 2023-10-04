@@ -16,5 +16,6 @@ public class WeaponSO : ScriptableObject
     public float ReloadTime;
     public int NumOfProjectile;
 
-
+    [Header("Config Melee")]
+    public float DamageMelee;
 }

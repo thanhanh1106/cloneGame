@@ -16,7 +16,9 @@ public class AnimatorCharacterController : MonoBehaviour
     }
     public enum AttackType
     {
-        Shoot
+        Shoot,
+        Melee,
+        Barehanded // tay không (Không có vũ khí)
     }
 
     Animator animator;

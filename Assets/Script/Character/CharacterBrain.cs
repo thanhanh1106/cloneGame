@@ -32,10 +32,9 @@ public abstract class CharacterBrain : MonoBehaviour,IDamageable
     //{
 
     //}
-
     protected virtual void Attack()
     {
-        animator.SetAttack(AnimatorCharacterController.AttackType.Shoot);
+        animator.SetAttack(characterAttack.GetAnimationAttackType());
         // cho quay mặt về phía target
         agent.RotateInDir(target.transform.position - transform.position);
         characterAttack.Attack(target.transform);

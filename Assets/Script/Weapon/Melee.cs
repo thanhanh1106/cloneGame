@@ -6,6 +6,10 @@ public class Melee : Weapon
 {
     public override void Attack(Transform target)
     {
-        
+        IDamageable damageable = target.GetComponent<IDamageable>();
+        if (damageable != null)
+        {
+            damageable.TakeDamage(weaponData.DamageMelee);
+        }
     }
 }

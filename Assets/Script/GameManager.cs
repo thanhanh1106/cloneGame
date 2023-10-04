@@ -16,6 +16,7 @@ public class GameManager : Singleton<GameManager>
     public List<WayPoint> EnemiesWayPoints;
     public List<EnemyBrain> Enemies;
     public CharacterBrain Player;
+    public UI_SwapGun UiSwapGunManager;
 
 
 }
