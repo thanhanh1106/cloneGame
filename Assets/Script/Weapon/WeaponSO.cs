@@ -7,6 +7,7 @@ public class WeaponSO : ScriptableObject
 {
     [Header("Projectile preflabs")]
     public GameObject Projectile;
+    public ProjectileName ProjectileName;
 
     [Header("Config")]
     public float AttachRange;
@@ -18,4 +19,9 @@ public class WeaponSO : ScriptableObject
 
     [Header("Config Melee")]
     public float DamageMelee;
+}
+public enum ProjectileName
+{
+    Bullet1,
+    Bullet2
 }

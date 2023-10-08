@@ -26,7 +26,7 @@ public class SubmachineGun : Gun
 
         if (countTime == 0)
         {
-            GameObject bulletObj = ObjectPooler.Instance.GetGameObjectFormPool("Bullet", SpawnPoint.position, Quaternion.identity);
+            GameObject bulletObj = ObjectPooler.Instance.GetGameObjectFormPool(weaponData.ProjectileName.ToString(), SpawnPoint.position, Quaternion.identity);
             Bullet bullet = bulletObj.GetComponent<Bullet>();
             bullet.MoveToTarget(target.position);
             currentProjectile--;

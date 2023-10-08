@@ -6,6 +6,9 @@ using UnityEngine;
 public class PlayerBrain : CharacterBrain
 {
     [SerializeField] protected Joystick joystick;
+    [SerializeField] List<Weapon> weaponsList = new List<Weapon>();
+    Dictionary<WeaponName, GameObject> weaponsDic = new Dictionary<WeaponName, GameObject>();
+    WeaponName currentWeapon;
 
     protected override CharacterBrain target =>
         GameManager.Instance.Enemies
@@ -15,6 +18,21 @@ public class PlayerBrain : CharacterBrain
     protected override void HandlerDie()
     {
         Debug.Log("Player die");
+    }
+    private void Awake()
+    {
+        foreach (Weapon weapon in weaponsList)
+        {
+            weaponsDic[weapon.weaponName] = weapon.gameObject;
+        }
+    }
+    private void OnEnable()
+    {
+        GameManager.Instance.UiSwapGunManager.OnSwapGun += HandlerSwapWeapon;
+    }
+    private void OnDisable()
+    {
+        GameManager.Instance.UiSwapGunManager.OnSwapGun -= HandlerSwapWeapon;
     }
 
     protected void Update()
@@ -33,5 +51,13 @@ public class PlayerBrain : CharacterBrain
             Vector3 direction = new Vector3(joystick.Direction.x,0,joystick.Direction.y);
             agent.MoveInDir(direction);
         }
+    }
+
+    void HandlerSwapWeapon(WeaponName name)
+    {
+        weaponsDic[currentWeapon].SetActive(false);
+        weaponsDic[name].SetActive(true);
+        currentWeapon = name;
+        characterAttack.HandleChangeWeapon();
     }
 }

@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9185a02cc4b4c4e4c8a0b0d9fa2faec1, type: 3}
   m_Name: SawGun
   m_EditorClassIdentifier: 
-  Projectile: {fileID: 3619236790702965039, guid: 287407f5a28acae458b35cba3a6f5e85, type: 3}
-  AttachRange: 10
-  FireRate: 10
-  ReloadTime: 2
+  Projectile: {fileID: 667066964043109731, guid: a465d021e38f0d747bcec496bcc163f4, type: 3}
+  ProjectileName: 1
+  AttachRange: 20
+  FireRate: 0.5
+  ReloadTime: 1
   NumOfProjectile: 5
   DamageMelee: 0

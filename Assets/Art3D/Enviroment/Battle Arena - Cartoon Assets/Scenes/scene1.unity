@@ -2014,7 +2014,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultAttackRange: 5
   DefaultAttackDamage: 2
-  weaponsList: []
 --- !u!114 &89098243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10438,8 +10437,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 300.5, y: -14}
-  m_SizeDelta: {x: 80, y: 80}
+  m_AnchoredPosition: {x: 811, y: -112}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &540046906
 MonoBehaviour:
@@ -10523,15 +10522,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.4117647}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 54628aafa20f64b40ae661038ee7abf0, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -11153,8 +11152,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Pools:
-  - Tag: Bullet
+  - Tag: Bullet1
     Prefabs: {fileID: 3619236790702965039, guid: 287407f5a28acae458b35cba3a6f5e85, type: 3}
+    InitialSize: 10
+  - Tag: Bullet2
+    Prefabs: {fileID: 667066964043109731, guid: a465d021e38f0d747bcec496bcc163f4, type: 3}
     InitialSize: 10
 --- !u!4 &568177577
 Transform:
@@ -14056,6 +14058,9 @@ MonoBehaviour:
   characterAttack: {fileID: 754853868}
   statsManager: {fileID: 754853869}
   joystick: {fileID: 1508697523}
+  weaponsList:
+  - {fileID: 1121743653}
+  - {fileID: 1999028253}
 --- !u!114 &754853863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14146,9 +14151,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultAttackRange: 5
   DefaultAttackDamage: 2
-  weaponsList:
-  - {fileID: 1121743653}
-  - {fileID: 1999028253}
 --- !u!114 &754853869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16256,6 +16258,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4838038023361216, guid: 06f787df46997ab4dba391e08deaa9c0, type: 3}
   m_PrefabInstance: {fileID: 837283979}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &845528971
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 845528972}
+  m_Layer: 0
+  m_Name: Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &845528972
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845528971}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -0, z: 1.325}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1121743654}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &846428060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16498,6 +16531,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6679818113406793263, guid: eed2826d10b367d4baa1d37358f64197, type: 3}
       insertIndex: 0
       addedObject: {fileID: 2080669706}
+    - targetCorrespondingSourceObject: {fileID: 2839164151208272157, guid: eed2826d10b367d4baa1d37358f64197, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 845528972}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 776543977523952592, guid: eed2826d10b367d4baa1d37358f64197, type: 3}
       insertIndex: -1
@@ -21135,7 +21171,12 @@ MonoBehaviour:
   weaponData: {fileID: 11400000, guid: 4381a020c12f6e54181a0b09d79e9b38, type: 2}
   attackTypeAnimation: 0
   weaponName: 0
-  SpawnPoint: {fileID: 2080669706}
+  SpawnPoint: {fileID: 845528972}
+--- !u!4 &1121743654 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2839164151208272157, guid: eed2826d10b367d4baa1d37358f64197, type: 3}
+  m_PrefabInstance: {fileID: 856732499}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1127328268
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24059,11 +24100,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4357502243292984, guid: 384f340d4116f084ea962a9fdc16b9c7, type: 3}
   m_PrefabInstance: {fileID: 1276898022}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1277063924 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6679818113406793261, guid: eed2826d10b367d4baa1d37358f64197, type: 3}
-  m_PrefabInstance: {fileID: 856732499}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1282522963
 PrefabInstance:
@@ -36204,7 +36240,7 @@ MonoBehaviour:
   weaponData: {fileID: 11400000, guid: 354fddd0a7955f2458b6e84c3aeae159, type: 2}
   attackTypeAnimation: 0
   weaponName: 1
-  SpawnPoint: {fileID: 1277063924}
+  SpawnPoint: {fileID: 2080669706}
 --- !u!4 &1999028254 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6679818113406793263, guid: eed2826d10b367d4baa1d37358f64197, type: 3}
@@ -36656,8 +36692,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 300.5, y: 91}
-  m_SizeDelta: {x: 80, y: 80}
+  m_AnchoredPosition: {x: 808, y: 181}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2017423512
 MonoBehaviour:
@@ -36671,7 +36707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e21f8fea305fde42b106bd8c7006e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: 1
+  weaponName: 0
 --- !u!114 &2017423513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36741,15 +36777,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.4117647}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.9529412}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 54628aafa20f64b40ae661038ee7abf0, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -38110,7 +38146,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2080669705}
   m_LocalRotation: {x: 0.000000029802312, y: -0, z: -0.000000029802312, w: 1}
-  m_LocalPosition: {x: 0.011, y: 0.03, z: 1.256}
+  m_LocalPosition: {x: 0.011, y: 0.03, z: 1.315}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

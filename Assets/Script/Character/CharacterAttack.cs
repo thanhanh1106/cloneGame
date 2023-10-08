@@ -8,11 +8,10 @@ public class CharacterAttack : MonoBehaviour
 {
     [SerializeField] float DefaultAttackRange = 5f;
     [SerializeField] float DefaultAttackDamage = 2f; // dame nếu dùng tay không
-    [SerializeField] List<Weapon> weaponsList = new List<Weapon>();
-    Dictionary<WeaponName, GameObject> weaponsDic = new Dictionary<WeaponName, GameObject>();
+    
     private Weapon weapon;
 
-    WeaponName currentWeapon;
+
 
     public Action<bool> OnAttack;
 
@@ -21,7 +20,7 @@ public class CharacterAttack : MonoBehaviour
         if(weapon && weapon is Gun gun)
             gun.OnChangedProjectile += HandlerChangedProjectile;
 
-        GameManager.Instance.UiSwapGunManager.OnSwapGun += HandleClickSwapButton;
+         
     }
     private void OnDisable()
     {
@@ -39,17 +38,14 @@ public class CharacterAttack : MonoBehaviour
 
     private void Awake()
     {
-        foreach(Weapon weapon in weaponsList)
-        {
-            weaponsDic[weapon.weaponName] = weapon.gameObject;
-        }
+
         weapon = GetComponentInChildren<Weapon>();
         if(weapon)
             weapon.OnAttack = HandlerOnAttackWeapon;
     }
 
 
-    void HandleChangeWeapon()
+    public void HandleChangeWeapon()
     {
         weapon = GetComponentInChildren<Weapon>();
         if (weapon)
@@ -59,13 +55,12 @@ public class CharacterAttack : MonoBehaviour
     public void Attack(Transform target)
     {
         weapon?.Attack(target);
+        // đoạn này phải sửa lại về tầm đánh
         if(weapon == null)
         {
             IDamageable damageable = target.GetComponent<IDamageable>();
             damageable.TakeDamage(DefaultAttackDamage);
         }
-            
-
     }
 
     public AnimatorCharacterController.AttackType GetAnimationAttackType()
@@ -81,13 +76,5 @@ public class CharacterAttack : MonoBehaviour
     protected void HandlerOnAttackWeapon(bool isAttacking)
     {
         OnAttack?.Invoke(isAttacking);
-    }
-    protected void HandleClickSwapButton(WeaponName name)
-    {
-        weaponsDic[currentWeapon].SetActive(false);
-        weaponsDic[name].SetActive(true);
-        currentWeapon = name;
-
-        HandleChangeWeapon();
     }
 }
