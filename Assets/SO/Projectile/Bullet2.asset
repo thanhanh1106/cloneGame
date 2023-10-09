@@ -15,6 +15,7 @@ MonoBehaviour:
   MoveSpeed: 15
   TimeExistence: 3
   Damage: 30
+  ProjectileName: 1
   ProjectileFX: {fileID: 198619286141681048, guid: e7776336bc56a9b4caa1c90ea92ff765, type: 3}
   HitFX: {fileID: 198657971356398654, guid: e46e60dfd73d7ed4fa8a4ef323af2e69, type: 3}
   flashFX: {fileID: 198447726614856880, guid: 63baf4956cfa45d4aa5cd12cbc8b7689, type: 3}
