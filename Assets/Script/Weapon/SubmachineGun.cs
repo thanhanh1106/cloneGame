@@ -17,7 +17,6 @@ public class SubmachineGun : Gun
             this.DelayLamda(() =>
             {
                 Reaload();
-                isOnReloading = false;
             }, weaponData.ReloadTime);
         }
 
@@ -39,6 +38,7 @@ public class SubmachineGun : Gun
 
     public override void Reaload()
     {
+        isOnReloading = false;
         currentProjectile = weaponData.NumOfProjectile;
         OnChangedProjectile?.Invoke(currentProjectile);
     }

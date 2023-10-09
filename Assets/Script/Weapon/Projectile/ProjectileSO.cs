@@ -9,6 +9,7 @@ public class ProjectileSO : ScriptableObject
     public float MoveSpeed;
     public float TimeExistence; // thời gian tồn tại
     public float Damage;
+    public ProjectileName ProjectileName;
 
     [Header("Object Reference")]
     public ParticleSystem ProjectileFX;

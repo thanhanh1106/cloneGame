@@ -55,6 +55,8 @@ public class CharacterAttack : MonoBehaviour
     public void Attack(Transform target)
     {
         weapon?.Attack(target);
+        if (weapon == null) Debug.LogWarning("weapon is null!"); 
+
         // đoạn này phải sửa lại về tầm đánh
         if(weapon == null)
         {

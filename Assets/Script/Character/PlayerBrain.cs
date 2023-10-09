@@ -17,7 +17,7 @@ public class PlayerBrain : CharacterBrain
 
     protected override void HandlerDie()
     {
-        Debug.Log("Player die");
+        //Debug.Log("Player die");
     }
     private void Awake()
     {
@@ -56,8 +56,13 @@ public class PlayerBrain : CharacterBrain
     void HandlerSwapWeapon(WeaponName name)
     {
         weaponsDic[currentWeapon].SetActive(false);
-        weaponsDic[name].SetActive(true);
         currentWeapon = name;
+        GameObject currentWeaponObj = weaponsDic[currentWeapon];
+        currentWeaponObj.SetActive(true);
+        Gun gun = currentWeaponObj.GetComponent<Gun>();
+        gun?.Reaload();
+        
         characterAttack.HandleChangeWeapon();
+
     }
 }

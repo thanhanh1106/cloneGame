@@ -18,7 +18,6 @@ public class UI_SwapGun : MonoBehaviour
 
     private void HandleClickSwapGun(WeaponName name)
     {
-        Debug.Log("click");
         OnSwapGun?.Invoke(name);
     }
 }

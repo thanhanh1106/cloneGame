@@ -24,6 +24,6 @@ public class Bullet : Projectile
     }
     protected override void ReturnPool()
     {
-        ObjectPooler.Instance.ReturnGameObjectToPool("Bullet", this.gameObject);
+        ObjectPooler.Instance.ReturnGameObjectToPool(projectileData.ProjectileName.ToString(), this.gameObject);
     }
 }
